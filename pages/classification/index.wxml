@@ -51,7 +51,7 @@
             </view>
             <view class='soldInfo'>
               <wxc-label class="sold" wx:if="{{item.numberOrders == 0}}" type='fill'>新品上市</wxc-label>
-              <wxc-label class="sold" wx:if="{{item.numberOrders != 0}}">已售{{item.numberOrders}}份</wxc-label>
+              <wxc-label class="sold" wx:if="{{item.numberOrders != 0}}">已使用{{item.numberOrders + 10000}}次</wxc-label>
               <wxc-label class='star' style='position:absolute;left:380rpx;' type='fill' type-color='none' text-color='#666666'>
                 <block wx:for="{{item.starpic}}" wx:key="id" wx:for-item="star">
                   <image class="img" src="{{star}}" style="width:20rpx;height:20rpx;"></image>

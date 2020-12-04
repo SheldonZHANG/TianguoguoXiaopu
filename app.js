@@ -16,11 +16,16 @@ App({
     return wx.getStorageSync('mallName')
   },
   async getGoodsCategory(){
-    const res = await WXAPI.goodsCategory()
+    console.log("hello world")
+    //const res = await WXAPI.goodsCategory()
+    const data = [{id:182455, name:"pdf转word、html"}, {id:162544, name: "视频去水印"}, {id:165327, name: "图片ocr"}, {id:166370, name:"人脸融合"}, {id:162473, name:"口语评测"}, {id:166222, name:"语音识别"}, {id:166223, name:"机器人电话"}]
+    const res = {code:0, data:data}
+    
     const categories = []; //{ id: 0, name: "全品类" }
     if (res.code == 0) {
       for (var i = 0; i < res.data.length; i++) {
         categories.push(res.data[i]);
+        console.log(res.data[i].id);
       }
       this.globalData.categories = categories
       // this.getGoods(0);//获取全品类商品

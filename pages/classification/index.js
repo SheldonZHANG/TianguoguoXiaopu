@@ -159,7 +159,8 @@ Page(Object.assign({},{
   //事件处理函数
   toDetailsTap: function (e) {
     wx.navigateTo({
-      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+//      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/remove-watermark/index"
     })
   },
   reLoad: function () {

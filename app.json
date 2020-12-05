@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/classification/index",
+    "pages/remove-watermark/index",
+    "pages/remove-watermark-video/video",
     "pages/choiceness/index",
     "pages/finder/index",
     "pages/ucenter/index/index",

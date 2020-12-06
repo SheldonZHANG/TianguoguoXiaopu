@@ -62,7 +62,7 @@
         <view>
           <block wx:if="true">
           <view>
-          <view class="goods" wx:for="{{CurrentCategory.tools_list}}" wx:key="id" wx:for-item="item" data-id='{{item.tool_name}}' bindtap="toDetailsTap">
+          <view class="goods" wx:for="{{CurrentCategory.tools_list}}" wx:key="tool_name" wx:for-item="item"   data-toolname='{{item.tool_name}}' data-categorylabel="{{CurrentCategory.category_label}}" bindtap="tapTools">
             <image class="pic" src="{{item.pic}}">
               <image class='fresh-tag' src="/images/goodsDescription/fresh.png"></image>
             </image>

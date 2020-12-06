@@ -191,6 +191,52 @@ Page(Object.assign({},{
     }*/
 
   },
+  tapTools: function(event) {
+    console.log("In Function tapTools event=")
+    console.log(event)
+    //console.log("In Function tapTools event.target.dataset=" + event.target.dataset)
+    //console.log("In Function tapTools event.target.dataset.categorylabel=" + event.target.dataset.categorylabel)
+    //console.log("In Function tapTools event.target.dataset.toolname=" + event.target.dataset.toolname)
+
+    //console.log("In Function tapTools event.Currenttarget.dataset=" + event.CurrentTarget.dataset)
+    //console.log("In Function tapTools event.Currenttarget.dataset.categorylabel=" + event.CurrentTarget.categorylabel)
+    //console.log("In Function tapTools event.Currenttarget.dataset.toolname=" + event.CurrentTarget.toolname)
+    if (event.currentTarget.dataset.categorylabel == "pdf2word" && event.currentTarget.dataset.toolname == "pdf2word") {
+      wx.navigateTo({
+              url: "/pages/remove-watermark/index"
+      })
+    }
+    if (event.target.dataset.categorylabel == "remove-watermark" && event.target.dataset.toolname == "remove-watermark") {
+      wx.navigateTo({
+              url: "/pages/remove-watermark/index"
+      })
+    }
+    if (event.target.dataset.categorylabel == "ocr" && event.target.dataset.toolname == "ocr") {
+      wx.navigateTo({
+              url: "/pages/ocr/index"
+      })
+    }
+    if (event.target.dataset.categorylabel == "face-fusion" && event.target.dataset.toolname == "face-fusion") {
+      wx.navigateTo({
+              url: "/pages/face-fusion/index"
+      })
+    }
+    if (event.target.dataset.categorylabel == "language-grading" && event.target.dataset.toolname == "language-grading") {
+      wx.navigateTo({
+              url: "/pages/language-grading/index"
+      })
+    }
+    if (event.target.dataset.categorylabel == "language-recognition" && event.target.dataset.toolname == "language-recognition") {
+      wx.navigateTo({
+              url: "/pages/language-recognition/index"
+      })
+    }
+    if (event.target.dataset.categorylabel == "robot-calls" && event.target.dataset.toolname == "robot-calls") {
+      wx.navigateTo({
+              url: "/pages/robot-calls/index"
+      })
+    }
+  },
   //事件处理函数
   toDetailsTap: function (e) {
     wx.navigateTo({

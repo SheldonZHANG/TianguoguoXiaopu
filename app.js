@@ -144,7 +144,7 @@ App({
     remove_watermark_videosrc: null,
     globalToolsList: [
     {'category_label': 'pdf2word',         'display_class_name':"pdf转word、html",  'tools_list': [
-                                                                                  {'tool_name': 'default',          'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic': ' https://dcdn.it120.cc/2020/08/30/10561173-bc82-4be0-a4c9-fbfdf048612a.jpg'}
+                                                                                  {'tool_name': 'pdf2word',          'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic': ' https://dcdn.it120.cc/2020/08/30/10561173-bc82-4be0-a4c9-fbfdf048612a.jpg'}
                                                                                 ]},
     {'category_label': 'remove-watermark', 'display_class_name': "视频去水印",       'tools_list': [
                                                                                   {'tool_name': 'remove-watermark', 'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic':'https://dcdn.it120.cc/2020/08/30/41e45996-ce45-45a5-b2e6-cb31df9ccab4.png'}

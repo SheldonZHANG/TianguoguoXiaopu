@@ -25,63 +25,41 @@
     <wxc-toast is-show="{{loadingFinish}}" icon="yes" icon-color="#FF0077" text="所有商品加载完成"> </wxc-toast>
 
     <scroll-view class="classify-container" scroll-y="true" scroll-with-animation="true">
-      <view class="classify {{classifyViewed==classify.id?'active':''}}" wx:for="{{categories}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
+      <!-- <view class="classify {{classifyViewed==classify.id?'active':''}}" wx:for="{{categories}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
         <view class="name {{classifyViewed==classify.id?'active':''}}">{{classify.name}}</view>
+      </view> -->
+      <view class="classify {{CategoryViewed=='pdf2word'?'active':''}}"  wx:key="category_label" data-categorylabel="pdf2word" bindtap="tapCategory">
+        <view class="name {{classifyViewed=='pdf2word'?'active':''}}">pdf转word、html</view>
       </view>
-      <view class="classify"  wx:key="id" data-categorylabel="pdf2word" bindtap="tapCategory">
-        <view class="name">pdf转word、html</view>
+      <view class="classify {{CategoryViewed=='remove-watermark'?'active':''}}"  wx:key="category_label" data-categorylabel="remove-watermark" bindtap="tapCategory">
+        <view class="name {{CategoryViewed=='remove-watermark'?'active':''}}">视频去水印</view>
       </view>
-      <view class="classify"  wx:key="id" data-categorylabel="watermark" bindtap="tapCategory">
-        <view class="name">视频去水印</view>
+      <view class="classify {{CategoryViewed=='ocr'?'active':''}}"  wx:key="category_label" data-categorylabel="ocr" bindtap="tapCategory">
+        <view class="name {{CategoryViewed=='ocr'?'active':''}}">图片ocr</view>
       </view>
-      <view class="classify"  wx:key="id" data-categorylabel="ocr" bindtap="tapCategory">
-        <view class="name">图片ocr</view>
+      <view class="classify {{CategoryViewed=='face-fusion'?'active':''}}"  wx:key="category_label" data-categorylabel="face-fusion" bindtap="tapCategory">
+        <view class="name {{CategoryViewed=='face-fusion'?'active':''}}">人脸融合</view>
       </view>
-      <view class="classify"  wx:key="id" data-categorylabel="face-fusion" bindtap="tapCategory">
-        <view class="name">人脸融合</view>
+      <view class="classify {{CategoryViewed=='language-grading'?'active':''}}"  wx:key="category_label" data-categorylabel="language-grading" bindtap="tapCategory">
+        <view class="name {{CategoryViewed=='langugage-grading'?'active':''}}">口语评测</view>
+      </view>'
+      <view class="classify {{CategoryViewed=='language-recognition'?'active':''}}"  wx:key="category_label" data-categorylabel="language-recognition" bindtap="tapCategory">
+        <view class="name {{CategoryViewed=='language-recognition'?'active':''}}">语音识别</view>
       </view>
-      <view class="classify"  wx:key="id" data-categorylabel="language-grading" bindtap="tapCategory">
-        <view class="name">口语评测</view>
-      </view>
-      <view class="classify"  wx:key="id" data-categorylabel="language-recognition" bindtap="tapCategory">
-        <view class="name">语音识别</view>
-      </view>
-      <view class="classify"  wx:key="id" data-categorylabel="robot-calls" bindtap="tapCategory">
-        <view class="name">机器人电话</view>
+      <view class="classify {{CategoryViewed=='robot-calls'?'active':''}}"  wx:key="category_label" data-categorylabel="robot-calls" bindtap="tapCategory">
+        <view class="name {{CategoryViewed=='robot-calls'?'active':''}}">机器人电话</view>
       </view>
     </scroll-view>
 
     <scroll-view class="goods-container" scroll-y="true" scroll-top="{{scrolltop}}" wx:if='{{onLoadStatus}}'>
       <view data="{{goodsListCurrent}}">
         <view class="title">
-          {{goodsListCurrent.name}}
+          {{CurrentCategory.category_label}}
         </view>
         <view style='text-align:center; font-size:28rpx; font-weight:bold;'>
-          <wxc-elip wx:if='{{goodsListCurrent.goods.length != 0}}'>{{goodsListCurrent.type}}</wxc-elip>
+          <wxc-elip wx:if='{{CurrentCategory.tools_list.length != 0}}'>{{CurrentCategory.category_label}}</wxc-elip>
         </view>
         <view>
-          <view class="goods" wx:for="{{goodsListCurrent.goods}}" wx:key="id" wx:for-item="item" data-id='{{item.id}}' bindtap="toDetailsTap">
-            <image class="pic" src="{{item.pic}}">
-              <image class='fresh-tag' src="/images/goodsDescription/fresh.png"></image>
-            </image>
-            <view class="name ellipsis">{{item.name}}</view>
-            <view class='soldInfo'>
-              <view class='good-price-box'>
-                <wxc-price class='price' value='{{item.minPrice}}'></wxc-price>
-              </view>
-            </view>
-            <view class='soldInfo'>
-              <wxc-label class="sold" wx:if="{{item.numberOrders == 0}}" type='fill'>新品上市</wxc-label>
-              <wxc-label class="sold" wx:if="{{item.numberOrders != 0}}">已使用{{item.numberOrders + 10000}}次</wxc-label>
-              <wxc-label class='star' style='position:absolute;left:380rpx;' type='fill' type-color='none' text-color='#666666'>
-                <block wx:for="{{item.starpic}}" wx:key="id" wx:for-item="star">
-                  <image class="img" src="{{star}}" style="width:20rpx;height:20rpx;"></image>
-                </block>
-                <text style='padding-left:10rpx;' wx:if="{{item.starscore}}" data-pingfen="{{item.starscore}}">{{item.starscore}}分</text>
-                <text style='padding-left:10rpx;' wx:else data-pingfen="{{item.starscore}}">0分</text>
-              </wxc-label>
-            </view>
-          </view>
           <block wx:if="true">
           <view>
           <view class="goods" wx:for="{{CurrentCategory.tools_list}}" wx:key="id" wx:for-item="item" data-id='{{item.tool_name}}' bindtap="toDetailsTap">

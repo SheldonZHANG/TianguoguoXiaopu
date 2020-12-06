@@ -7,6 +7,7 @@ Page(Object.assign({},{
   data: {
     CurrentCategoryLabel: null,
     CurrentCategory: null,
+    CategoryViewd: null,
     onLoadStatus: true,
     indicatorDots: true,
     loadingStatus: false, // loading
@@ -68,6 +69,13 @@ Page(Object.assign({},{
         })
       }
     }
+    this.setData({
+      CategoryViewd: app.globalData.globalToolsList[0].category_label,
+      CurrentCategoryLabel: app.globalData.globalToolsList[0].category_label,
+      CurrentCategory: app.globalData.globalToolsList[0].category_label
+    }
+    )
+    console.log("In OnLoad() Function CategoryViewed=" + this.data.CategoryViewd + " CurrentCategory=" + this.data.CurrentCategory)
 
     //获取系统信息  
     wx.getSystemInfo({
@@ -135,13 +143,14 @@ Page(Object.assign({},{
         //tools_list.push(app.globalData.globalToolsList[i])
         this.setData({
           CurrentCategoryLabel: event.target.dataset.categorylabel,
+          CategoryViewed: event.target.dataset.categorylabel,
           CurrentCategory: app.globalData.globalToolsList[i],
           scrolltop: 0,
           page: 1,
         })
         console.log("In Function tagCategory(): " + event.target.dataset.categorylabel + " CurrentToolsList.tools_list.length=" + app.globalData.globalToolsList[i].tools_list.length)
         for(var j = 0; j < app.globalData.globalToolsList[i].tools_list.length; j++) {
-          console.log("In Function tagCategory(): pv_cnt " + app.globalData.globalToolsList[i].tools_list[j].pv_cnt)
+          console.log("In Function tagCategory(): pv_cnt " + app.globalData.globalToolsList[i].tools_list[j].pv_cnt + " tool_name:" + app.globalData.globalToolsList[i].tools_list[j].tool_name)
         }
         break
       }

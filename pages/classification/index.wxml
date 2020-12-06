@@ -28,6 +28,27 @@
       <view class="classify {{classifyViewed==classify.id?'active':''}}" wx:for="{{categories}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
         <view class="name {{classifyViewed==classify.id?'active':''}}">{{classify.name}}</view>
       </view>
+      <view class="classify"  wx:key="id" data-categorylabel="pdf2word" bindtap="tapCategory">
+        <view class="name">pdf转word、html</view>
+      </view>
+      <view class="classify"  wx:key="id" data-categorylabel="watermark" bindtap="tapCategory">
+        <view class="name">视频去水印</view>
+      </view>
+      <view class="classify"  wx:key="id" data-categorylabel="ocr" bindtap="tapCategory">
+        <view class="name">图片ocr</view>
+      </view>
+      <view class="classify"  wx:key="id" data-categorylabel="face-fusion" bindtap="tapCategory">
+        <view class="name">人脸融合</view>
+      </view>
+      <view class="classify"  wx:key="id" data-categorylabel="language-grading" bindtap="tapCategory">
+        <view class="name">口语评测</view>
+      </view>
+      <view class="classify"  wx:key="id" data-categorylabel="language-recognition" bindtap="tapCategory">
+        <view class="name">语音识别</view>
+      </view>
+      <view class="classify"  wx:key="id" data-categorylabel="robot-calls" bindtap="tapCategory">
+        <view class="name">机器人电话</view>
+      </view>
     </scroll-view>
 
     <scroll-view class="goods-container" scroll-y="true" scroll-top="{{scrolltop}}" wx:if='{{onLoadStatus}}'>
@@ -61,7 +82,32 @@
               </wxc-label>
             </view>
           </view>
-
+          <block wx:if="true">
+          <view>
+          <view class="goods" wx:for="{{CurrentCategory.tools_list}}" wx:key="id" wx:for-item="item" data-id='{{item.tool_name}}' bindtap="toDetailsTap">
+            <image class="pic" src="{{item.pic}}">
+              <image class='fresh-tag' src="/images/goodsDescription/fresh.png"></image>
+            </image>
+            <view class="name ellipsis">{{item.tool_name}}</view>
+            <view class='soldInfo'>
+              <view class='good-price-box'>
+                <wxc-price class='price' value='{{item.pv_cnt}}'></wxc-price>
+              </view>
+            </view>
+            <view class='soldInfo'>
+              <wxc-label class="sold" wx:if="{{item.pv_cnt == 0}}" type='fill'>新品上市</wxc-label>
+              <wxc-label class="sold" wx:if="{{item.pv_cnt != 0}}">已使用{{item.pv_cnt}}次</wxc-label>
+              <wxc-label class='star' style='position:absolute;left:380rpx;' type='fill' type-color='none' text-color='#666666'>
+                <block wx:for="{{item.starpic}}" wx:key="id" wx:for-item="star">
+                  <image class="img" src="{{star}}" style="width:20rpx;height:20rpx;"></image>
+                </block>
+                <text style='padding-left:10rpx;' wx:if="{{item.starscore}}" data-pingfen="{{item.starscore}}">{{item.starscore}}分</text>
+                <text style='padding-left:10rpx;' wx:else data-pingfen="{{item.starscore}}">0分</text>
+              </wxc-label>
+            </view>
+          </view>
+          </view>
+        </block>
           <wxc-abnor type="SHOP" wx:if='{{goodsListCurrent.goods.length === 0}}' title='还没有添加' tip='稍后再来试试吧~' bind:abnortap="reLoad"></wxc-abnor>
           <wxc-loadmore is-end="{{true}}" icon="{{true}}" style="position: relative; bottom: 0rpx;"></wxc-loadmore>
 

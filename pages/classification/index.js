@@ -5,6 +5,8 @@ var starscore = require("../../templates/starscore/starscore.js");
 //var server = require('../../utils/server');
 Page(Object.assign({},{
   data: {
+    CurrentCategoryLabel: null,
+    CurrentCategory: null,
     onLoadStatus: true,
     indicatorDots: true,
     loadingStatus: false, // loading
@@ -123,10 +125,34 @@ Page(Object.assign({},{
     //对canvasClock函数循环调用  
     this.interval = setInterval(this.canvasClock, 1000)
   },
+  tapCategory: function(event) {
+    var tools_list = []
+    console.log("In Function tapCategory(): " + event.target.dataset)
+    console.log("In Function tapCategory(): " + event.target.dataset.categorylabel)
+    for(var i = 0; i < app.globalData.globalToolsList.length; i++) {
+      //console.log("In Function tapCategory(): category_label at index=" + i + " = " + app.globalData.globalToolsList[i].category_label )
+      if (app.globalData.globalToolsList[i].category_label == event.target.dataset.categorylabel) {
+        //tools_list.push(app.globalData.globalToolsList[i])
+        this.setData({
+          CurrentCategoryLabel: event.target.dataset.categorylabel,
+          CurrentCategory: app.globalData.globalToolsList[i],
+          scrolltop: 0,
+          page: 1,
+        })
+        console.log("In Function tagCategory(): " + event.target.dataset.categorylabel + " CurrentToolsList.tools_list.length=" + app.globalData.globalToolsList[i].tools_list.length)
+        for(var j = 0; j < app.globalData.globalToolsList[i].tools_list.length; j++) {
+          console.log("In Function tagCategory(): pv_cnt " + app.globalData.globalToolsList[i].tools_list[j].pv_cnt)
+        }
+        break
+      }
+    }
+
+  },
   tapClassify: function (e) {
     var that = this;
     var id = e.target.dataset.id;
-    if (id === that.data.classifyViewed){
+    if (id === that.data.classifyViewed)
+    {
       that.setData({
         scrolltop: 0,
       })

@@ -15,6 +15,9 @@ App({
     this.globalData.initOk = true
     return wx.getStorageSync('mallName')
   },
+  async getToolsCategory() {
+    return this.globalToolsList
+  },
   async getGoodsCategory(){
     console.log("hello world")
     //const res = await WXAPI.goodsCategory()
@@ -81,6 +84,7 @@ App({
       goods[i].starscore = (goods[i].numberGoodReputation / goods[i].numberOrders) * 5
       goods[i].starscore = Math.ceil(goods[i].starscore / 0.5) * 0.5
       goods[i].starpic = starscore.picStr(goods[i].starscore)
+      console.log("In getGoods() Function goods[" + i + "].pic = " + goods[i].pic)
 
     }
     this.globalData.goods = goods
@@ -123,9 +127,9 @@ App({
     page: 1, //初始加载商品时的页面号
     pageSize: 10000, //初始加载时的商品数，设置为10000保证小商户能加载完全部商品
     categories: [],
-    goods: [],
-    goodsName: [],
-    goodsList: [],
+    goods: [], //所有商品无序的集合
+    goodsName: [], 
+    goodsList: [], //所有商品按照categoryID为索引的集合
     onLoadStatus: true,
     activeCategoryId: null,
 
@@ -138,6 +142,29 @@ App({
     version: "2.3.0",
     userInfo: null,
     remove_watermark_videosrc: null,
-  }
+    globalToolsList: [
+    {'category_label': 'pdf2word',         'display_class_name':"pdf转word、html",  'tools_list': [
+                                                                                  {'tool_name': 'default',          'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic': ' https://dcdn.it120.cc/2020/08/30/10561173-bc82-4be0-a4c9-fbfdf048612a.jpg'}
+                                                                                ]},
+    {'category_label': 'remove-watermark', 'display_class_name': "视频去水印",       'tools_list': [
+                                                                                  {'tool_name': 'remove-watermark', 'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic':'https://dcdn.it120.cc/2020/08/30/41e45996-ce45-45a5-b2e6-cb31df9ccab4.png'}
+                                                                                  ]},
+    {'category_label': 'ocr',              'display_class_name': "图片ocr",         'tools_list': [
+                                                                                  {'tool_name': 'ocr',              'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic':'https://dcdn.it120.cc/2020/11/29/6150db0a-db52-4a25-a811-3d28a183549c.jpg'},
+                                                                                  ]}, 
+    {'category_label': 'face-fusion',      'display_class_name':"人脸融合",          'tools_list': [
+                                                                                  {'tool_name': 'face-fusion',      'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic':'https://dcdn.it120.cc/2020/11/19/cf47d71b-f3cb-4bb8-bc53-35e34c54e254.jpg'}, 
+                                                                                  ]},
+    {'category_label': 'language-grading', 'display_class_name':"口语评测",          'tools_list': [
+                                                                                  {'tool_name': 'language-grading',      'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic':'https://dcdn.it120.cc/2020/09/07/b25c2d5a-4681-490a-9910-2331ee04caa3.jpg'}, 
+                                                                                  ]},
+    {'category_label': 'language-recognition',      'display_class_name':"人脸融合",  'tools_list': [
+                                                                                  {'tool_name': 'language-recognition',      'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic':'https://dcdn.it120.cc/2020/09/03/c63964fc-7f67-4be0-9743-d063dcf586d1.jpg'}, 
+                                                                                  ]},
+    {'category_label': 'robot-calls',      'display_class_name':"机器人电话",            'tools_list': [
+                                                                                  {'tool_name': 'AI-calls',      'pv_cnt': 100, 'starpic': starscore.picStr(3.5), 'starscore': 3.5, 'pic': 'https://dcdn.it120.cc/2020/09/03/c63964fc-7f67-4be0-9743-d063dcf586d1.jpg'}, 
+                                                                                  ]},
+  ]
+},
   // 根据自己需要修改下单时候的模板消息内容设置，可增加关闭订单、收货时候模板消息提醒
 })

@@ -206,32 +206,32 @@ Page(Object.assign({},{
               url: "/pages/remove-watermark/index"
       })
     }
-    if (event.target.dataset.categorylabel == "remove-watermark" && event.target.dataset.toolname == "remove-watermark") {
+    if (event.currentTarget.dataset.categorylabel == "remove-watermark" && event.currentTarget.dataset.toolname == "remove-watermark") {
       wx.navigateTo({
               url: "/pages/remove-watermark/index"
       })
     }
-    if (event.target.dataset.categorylabel == "ocr" && event.target.dataset.toolname == "ocr") {
+    if (event.currentTarget.dataset.categorylabel == "ocr" && event.currentTarget.dataset.toolname == "ocr") {
       wx.navigateTo({
-              url: "/pages/ocr/index"
+              url: "/pages/ocr/list/list"
       })
     }
-    if (event.target.dataset.categorylabel == "face-fusion" && event.target.dataset.toolname == "face-fusion") {
+    if (event.currentTarget.dataset.categorylabel == "face-fusion" && event.currentTarget.dataset.toolname == "face-fusion") {
       wx.navigateTo({
               url: "/pages/face-fusion/index"
       })
     }
-    if (event.target.dataset.categorylabel == "language-grading" && event.target.dataset.toolname == "language-grading") {
+    if (event.currentTarget.dataset.categorylabel == "language-grading" && event.currentTarget.dataset.toolname == "language-grading") {
       wx.navigateTo({
               url: "/pages/language-grading/index"
       })
     }
-    if (event.target.dataset.categorylabel == "language-recognition" && event.target.dataset.toolname == "language-recognition") {
+    if (event.currentTarget.dataset.categorylabel == "language-recognition" && event.currentTarget.dataset.toolname == "language-recognition") {
       wx.navigateTo({
               url: "/pages/language-recognition/index"
       })
     }
-    if (event.target.dataset.categorylabel == "robot-calls" && event.target.dataset.toolname == "robot-calls") {
+    if (event.currentTarget.dataset.categorylabel == "robot-calls" && event.currentTarget.dataset.toolname == "robot-calls") {
       wx.navigateTo({
               url: "/pages/robot-calls/index"
       })
